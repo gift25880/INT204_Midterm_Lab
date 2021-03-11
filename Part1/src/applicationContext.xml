@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+    xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd
+    http://www.springframework.org/schema/context
+    http://www.springframework.org/schema/context/spring-context.xsd">
+
+	<bean id="pathinya" class="int204.midterm1.Pathinya" scope="prototype"/>
+	<bean id="pat" class="int204.midterm1.Pathinya" scope="singleton"/>
+	
+	<context:property-placeholder location="classpath:thonguam.properties"/>
+	<bean id="thonguam" class="int204.midterm1.Thonguam">
+		<property name="guam" value="${number}"/>
+	</bean>
+	
+	<bean id="path" class="int204.midterm1.Thonguam">
+		<constructor-arg type="double" value="00048"/>
+	</bean>
+	
+	<bean id="guam" class="int204.midterm1.PathinyaThonguam">
+		<constructor-arg index="0" ref="pat"/>
+		<constructor-arg index="1" ref="thonguam"/>
+	</bean>
+	
+</beans>
